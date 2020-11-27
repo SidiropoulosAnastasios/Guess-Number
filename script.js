@@ -14,10 +14,10 @@ document.querySelector(".check").addEventListener("click", function () {
 
   //no given numbers
   if (!guess) {
-    document.querySelector(".message").textContent = "NO number given!";
+    displayMessage("NO number given!");
     //when we won the game
   } else if (guess === secretNumber) {
-    document.querySelector(".message").textContent = "You found the number!";
+    displayMessage("You found the number!");
 
     //when it wins changes the background color and number width
     document.querySelector(".number").textContent = secretNumber;
@@ -32,7 +32,7 @@ document.querySelector(".check").addEventListener("click", function () {
     //when is to low
   } else if (guess < secretNumber) {
     if (score > 0) {
-      document.querySelector(".message").textContent = "To low number!";
+      displayMessage("To low number!");
       score--;
       document.querySelector(".score").textContent = score;
     } else {
@@ -44,7 +44,7 @@ document.querySelector(".check").addEventListener("click", function () {
     //when is to high
   } else if (guess > secretNumber) {
     if (score > 0) {
-      document.querySelector(".message").textContent = "To high number";
+      displayMessage("To high number");
       score--;
       document.querySelector(".score").textContent = score;
     } else {
@@ -60,7 +60,7 @@ document.querySelector(".again").addEventListener("click", function () {
   score = 20;
   secretNumber = Math.trunc(Math.random() * 20) + 1;
 
-  document.querySelector(".message").textContent = "Start guessing...";
+  displayMessage("Start guessing...");
   document.querySelector(".score").textContent = score;
   document.querySelector(".guess").value = "";
   document.querySelector(".number").textContent = "?";
@@ -68,3 +68,7 @@ document.querySelector(".again").addEventListener("click", function () {
   document.querySelector("body").style.backgroundColor = "#222";
   document.querySelector(".number").style.width = "15rem";
 });
+
+const displayMessage = function (message) {
+  document.querySelector(".message").textContent = message;
+};
